@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Imagegs</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<style>
+    body{
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(8,100,113,1) 0%, rgba(0,0,0,1) 47%, rgba(0,212,255,1) 100%);
+    }
+    .upload{
+        margin-top:30vh ;
+    }
+    .nav{
+        margin-left: 95%;
+    }
+</style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="nav"><a class="nav-link text-white btn btn-outline-info m-2" href="gallery">Gallery</a></div>
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-6">
+                <div class="upload">
+                    <div class="header h2  text-white text-center mb-5"><span>Select Picture</span></div>
+                    <form action="upload" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Tittle</span>
+                        <input type="text" aria-label="Tittle" class="form-control" name="tittle" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="file" class="form-control" aria-label="Upload" name="file" required>
+                        <button class="btn btn-outline-info" type="submit">Upload</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if alert %}
+    <script>
+        swal("Great", "Image uploaded", "success");
+    </script>
+    {% endif %}
+</body>
+</html>
